@@ -69,10 +69,10 @@ VXLAN (**Virtual eXtensible Local Area Network**) è un protocollo di **tunnelin
 | 6 | **Payload originale** | Dati originali (IP, ARP, ICMP, ecc.) incapsulati nel tunnel VXLAN |
 
 ### **Vantaggi di VXLAN**
-✔ **Scalabilità**: fino a 16 milioni di reti virtuali.
-✔ **Supporto per reti Layer 3**: tunneling su UDP per estendere la connettività tra data center.
-✔ **Isolamento del traffico**: maggiore separazione delle reti rispetto alle VLAN.
-✔ **Integrazione con SDN**: VXLAN è compatibile con controller di rete per la gestione dinamica.
+- ✔ **Scalabilità**: fino a 16 milioni di reti virtuali.
+- ✔ **Supporto per reti Layer 3**: tunneling su UDP per estendere la connettività tra data center.
+- ✔ **Isolamento del traffico**: maggiore separazione delle reti rispetto alle VLAN.
+- ✔ **Integrazione con SDN**: VXLAN è compatibile con controller di rete per la gestione dinamica.
 
 ### **Funzionamento del Tunneling VXLAN**
 1. Un host invia un **pacchetto Ethernet** a un VTEP.
