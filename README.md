@@ -159,21 +159,6 @@ Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proven
    - Wireshark monitora i pacchetti UDP sulla porta 4789.
    - È possibile esaminare l'intestazione VXLAN e il frame Ethernet incapsulato.
 
-
-## 🔄 Flusso di lavoro
-
-1. **Configurazione della topologia Mininet**
-    - Due switch OVS collegati tramite un tunnel VXLAN.
-    - Due host connessi ai rispettivi switch.
-
-2. **Creazione del tunnel VXLAN**
-    - Configurazione automatica tramite Open vSwitch.
-    - Flussi OpenFlow aggiunti dal controller Ryu.
-
-3. **Analisi dei pacchetti**
-    - Wireshark viene utilizzato per catturare e analizzare i pacchetti VXLAN.
-    - Verifica dell'incapsulamento dei frame Layer 2 all'interno dei pacchetti IP/UDP.
-
 ## 📂 Material
 
 Esempio di pacchetto VXLAN catturato in Wireshark:
