@@ -19,7 +19,7 @@
 La struttura del progetto è organizzata nel seguente modo:
 ```
 VXLAN-Simulation/
-│── src/                    # Codice sorgente principale
+│── src/                     # Codice sorgente principale
 │   ├── vxlan_controller.py  # Controller Ryu per la gestione del traffico VXLAN
 │   ├── vxlan_ultimate.py    # Topologia Mininet e configurazione VXLAN
 │── captures/                # Immagini e file che testimoniano la cattura
@@ -58,7 +58,6 @@ Il diagramma della topologia è il seguente:
 
 Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proveniente dall'host in un pacchetto VXLAN e inviarlo attraverso il tunnel.
 
----
 
 ## 🚀 Installazione & esecuzione del progetto
 
@@ -94,7 +93,6 @@ h1 ping h2
 tcpdump -i any -nn port 4789
 ```
 
----
 
 ## 🔄 Descrizione del WorkFlow
 
@@ -110,7 +108,6 @@ tcpdump -i any -nn port 4789
    - Wireshark monitora i pacchetti UDP sulla porta 4789.
    - È possibile esaminare l'intestazione VXLAN e il frame Ethernet incapsulato.
 
----
 
 ## 🔄 Flusso di lavoro
 
@@ -140,7 +137,6 @@ Analisi dell'intestazione VXLAN:
     <img src="captures/vxlan_header_analysis.png" width="600">
 </p>
 
----
 
 ## 👥 Contributors
 
