@@ -1,7 +1,7 @@
 # VXLAN-Simulation
 
-> **VXLAN-Simulation** è un progetto che dimostra l'incapsulamento di pacchetti Layer 2 in VXLAN su una rete IP/UDP. 
-> Utilizza **Mininet** per simulare la topologia di rete e **Ryu Controller** per la gestione del traffico OpenFlow. 
+> VXLAN-Simulation è un progetto pensato per dimostrare l'incapsulamento di pacchetti Layer 2 in una rete IP/UDP utilizzando VXLAN.
+> Il sistema permette di simulare una topologia di rete virtuale flessibile, garantendo la corretta trasmissione dei dati tra host tramite tunnel VXLAN.
 > I pacchetti VXLAN vengono analizzati con **Wireshark** per verificare l'incapsulamento e il trasporto dei dati tra host virtualizzati.
 
 ## 📌 Contenuti
