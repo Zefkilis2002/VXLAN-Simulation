@@ -33,13 +33,53 @@ VXLAN-Simulation/
 
 ## 🌐 Cos'è VXLAN
 
-**VXLAN (Virtual eXtensible LAN)** è un protocollo di incapsulamento che permette di estendere reti Layer 2 attraverso un'infrastruttura Layer 3 utilizzando pacchetti IP/UDP. Questo consente la creazione di reti virtuali scalabili e indipendenti dalla topologia fisica, supportando un maggior numero di segmenti di rete rispetto alle tradizionali VLAN.
+VXLAN (**Virtual eXtensible Local Area Network**) è un protocollo di **tunneling** che estende le reti Layer 2 su un'infrastruttura **Layer 3** utilizzando **UDP/IP**. Progettato per superare le limitazioni delle VLAN tradizionali, VXLAN offre maggiore scalabilità e flessibilità.
 
-Caratteristiche principali di VXLAN:
-- Incapsula frame Ethernet all'interno di pacchetti UDP.
-- Utilizza il VXLAN Network Identifier (VNI) per separare le reti virtuali.
-- Consente la comunicazione tra host su reti diverse senza configurazioni VLAN complesse.
-- È utilizzato in ambienti cloud e virtualizzazione di rete.
+### **Caratteristiche principali**
+
+| Caratteristica             | VLAN               | VXLAN                                   |
+| -------------------------- | ------------------ | --------------------------------------- |
+| **Identificatore di rete** | VLAN ID (12 bit)   | VXLAN Network Identifier (VNI - 24 bit) |
+| **Numero massimo di reti** | 4096 VLAN          | \~16 milioni di VXLAN                   |
+| **Ambito**                 | Layer 2 (Ethernet) | Layer 3 (IP/UDP)                        |
+| **Tunneling**              | No                 | Sì (UDP 4789)                           |
+| **Scalabilità**            | Limitata           | Elevata                                 |
+
+- VXLAN utilizza un **VNI (VXLAN Network Identifier) di 24 bit**, consentendo fino a **16 milioni di reti virtuali**.
+- I frame Ethernet vengono incapsulati in **pacchetti UDP**, rendendo VXLAN compatibile con l'infrastruttura IP esistente.
+
+### **Componenti chiave di VXLAN**
+
+- **VTEP (VXLAN Tunnel EndPoint)**: dispositivi che incapsulano e deincapsulano il traffico VXLAN.
+- **Outer IP Header**: il pacchetto esterno che trasporta il traffico VXLAN su UDP.
+- **UDP Header (porta 4789)**: il trasporto UDP consente la comunicazione VXLAN su reti Layer 3.
+- **VXLAN Header**: contiene il **VNI**, che identifica la rete virtuale.
+- **Inner Ethernet Frame**: il pacchetto Ethernet originale incapsulato.
+
+### **Struttura del pacchetto VXLAN**
+| **Livello** | **Componente** | **Descrizione** |
+|------------|--------------|----------------|
+| 1 | **Ethernet (Outer Ethernet Frame)** | Frame Ethernet esterno per l'incapsulamento VXLAN |
+| 2 | **IP Header (Outer IP Header)** | Intestazione IP esterna per il tunneling VXLAN |
+| 3 | **UDP Header (Dest. Port 4789 - VXLAN)** | Intestazione UDP con porta di destinazione 4789 (standard VXLAN) |
+| 4 | **VXLAN Header** | Intestazione VXLAN contenente informazioni di virtualizzazione |
+| 4.1 | **Flag** | Bit di controllo per identificare il pacchetto VXLAN |
+| 4.2 | **VXLAN Network Identifier (VNI)** | Identificatore di rete VXLAN (24 bit) |
+| 5 | **Ethernet (Inner Ethernet Frame)** | Frame Ethernet originale trasportato all'interno del tunnel |
+| 6 | **Payload originale** | Dati originali (IP, ARP, ICMP, ecc.) incapsulati nel tunnel VXLAN |
+
+### **Vantaggi di VXLAN**
+✔ **Scalabilità**: fino a 16 milioni di reti virtuali.
+✔ **Supporto per reti Layer 3**: tunneling su UDP per estendere la connettività tra data center.
+✔ **Isolamento del traffico**: maggiore separazione delle reti rispetto alle VLAN.
+✔ **Integrazione con SDN**: VXLAN è compatibile con controller di rete per la gestione dinamica.
+
+### **Funzionamento del Tunneling VXLAN**
+1. Un host invia un **pacchetto Ethernet** a un VTEP.
+2. Il VTEP **incapsula** il pacchetto Ethernet in un **pacchetto VXLAN** con il **VNI** appropriato.
+3. Il pacchetto VXLAN viene inoltrato sulla **rete IP** come un normale pacchetto UDP.
+4. Il VTEP di destinazione **deincapsula** il pacchetto, ripristinando il frame Ethernet originale.
+5. Il frame Ethernet viene inviato alla destinazione finale.
 
 
 ## 🗺️ Descrizione della Topologia
