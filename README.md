@@ -12,7 +12,6 @@
 - [Materiale multimediale](#materiale-multimediale)
 - [Contributors](#contributors)
 
----
 
 ## 📁 Project Structure
 
