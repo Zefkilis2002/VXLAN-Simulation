@@ -100,37 +100,49 @@ Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proven
 
 ## 🚀 Installazione & esecuzione del progetto
 
-### 1️⃣ Installare le dipendenze
-Per eseguire il progetto, è necessario installare:
-```bash
-sudo apt update && sudo apt install mininet openvswitch-switch wireshark python3-ryu
-```
+### **Guida all'installazione e configurazione della Virtual Machine su VirtualBox**
 
-### 2️⃣ Clonare la repository
-```bash
-git clone https://github.com/Zefkilis2002/VXLAN-Simulation.git
-cd VXLAN-Simulation
-```
+1. **Installa VirtualBox** scaricandolo dal sito ufficiale:  
+   🔗 [VirtualBox Download](https://www.virtualbox.org/wiki/Downloads).  
 
-### 3️⃣ Avviare la simulazione della rete
-```bash
-sudo python3 src/vxlan_ultimate.py
-```
+2. **Scarica la macchina virtuale** dal seguente link:  
+   🔗 [Download VM Image](https://drive.google.com/drive/folders/1FP5Bx2DHp7oV57Ja38_x01ABiw3wK11M?usp=sharing).
 
-### 4️⃣ Avviare il controller Ryu
-```bash
-ryu-manager src/vxlan_controller.py
-```
+3. **Importa la macchina virtuale** in VirtualBox:  
+   - Apri **VirtualBox** e vai su **File → Importa appliance**.  
+   - Seleziona il file **.ova** scaricato e segui le istruzioni per l'importazione.
 
-### 5️⃣ Verificare la connettività tra gli host
-```bash
-h1 ping h2
-```
+4. **Configura la macchina virtuale** dopo l'importazione:  
+   - Vai su **Impostazioni → Sistema → Processore** e assegna un numero adeguato di CPU.  
+   - Vai su **Impostazioni → Sistema → Memoria** e assegna una quantità sufficiente di RAM.  
 
-### 6️⃣ Monitorare il traffico VXLAN con Wireshark
-```bash
-tcpdump -i any -nn port 4789
-```
+5. **Avvia la macchina virtuale** tramite VirtualBox.
+
+6. **Connettiti alla VM via SSH** per una gestione più semplice:  
+   - Apri un terminale sul tuo computer e usa il comando:  
+     ```
+     ssh -X -p 2222 vagrant@localhost
+     ```
+   - Quando richiesto, inserisci la password: **vagrant**.
+
+7. **Installa MobaXterm** se vuoi eseguire Wireshark sulla VM con supporto grafico:  
+   - Scarica e installa **MobaXterm** dal sito ufficiale:  
+     🔗 [MobaXterm Download](https://mobaxterm.mobatek.net/download.html).  
+   - Apri **MobaXterm** e connettiti alla VM utilizzando lo stesso comando SSH:  
+     ```bash
+     ssh -X -p 2222 vagrant@localhost
+     ```
+
+8. **Creare una cartella nella VM e trasferire file con SCP**:  
+   - Accedi alla macchina virtuale via SSH e crea la cartella dove verrà salvato il file:
+     ```
+     mkdir -p /home/vagrant/vxlan_project
+     ```
+   - Dal tuo computer locale, usa il comando **scp** per trasferire il file:  
+     ```
+     scp -P 2222 C:\Percorso\Del\File\Da\Trasferire\file.py vagrant@localhost:/home/vagrant/vxlan_project
+     ```
+   - Il file sarà ora disponibile nella cartella `/home/vagrant/vxlan_project` sulla macchina virtuale.
 
 
 ## 🔄 Descrizione del WorkFlow
