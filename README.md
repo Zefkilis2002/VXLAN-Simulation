@@ -147,12 +147,6 @@ Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proven
 
 ## 🔄 Descrizione del WorkFlow
 
-Ecco la sezione migliorata del **Flusso di lavoro**, con descrizioni più dettagliate e una formattazione chiara:
-
----
-
-## 🔄 Flusso di lavoro
-
 Per testare la simulazione VXLAN eseguire i seguenti passaggi:
 
 1️⃣ **Avvia il controller Ryu**  
