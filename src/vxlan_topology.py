@@ -29,25 +29,27 @@ class VXLANTopo(Topo):
 
 
 def configure_vxlan(net):
-    # Configure switch IPs
+    # Get switches
     s1, s2 = net.get('s1', 's2')
     
-    # Configure IP addresses for switches
+    # Configurazione degli indirizzi IP degli switch
     s1.cmd('ifconfig s1-eth2 192.168.1.1/24')
     s2.cmd('ifconfig s2-eth2 192.168.1.2/24')
     
-    # Create VXLAN interfaces
+    # Creazione delle interfacce VXLAN per incapsulare il traffico L2 in UDP/IP
     s1.cmd('ovs-vsctl add-port s1 vxlan1 -- set interface vxlan1 type=vxlan options:remote_ip=192.168.1.2 options:local_ip=192.168.1.1 options:key=1000')
     s2.cmd('ovs-vsctl add-port s2 vxlan2 -- set interface vxlan2 type=vxlan options:remote_ip=192.168.1.1 options:local_ip=192.168.1.2 options:key=1000')
     
-    # Add flows to handle VXLAN traffic
-    s1.cmd('ovs-ofctl add-flow s1 "table=0,priority=100,in_port=1 actions=output:vxlan1"')
-    s1.cmd('ovs-ofctl add-flow s1 "table=0,priority=100,in_port=vxlan1 actions=output:1"')
+    # Aggiunta di regole OpenFlow per inoltrare il traffico VXLAN
+    s1.cmd('ovs-ofctl add-flow s1 "table=0,priority=100,in_port=1 actions=output:vxlan1"') # Inoltra pacchetti da h1 a vxlan1
+    s1.cmd('ovs-ofctl add-flow s1 "table=0,priority=100,in_port=vxlan1 actions=output:1"') # Inoltra pacchetti VXLAN ricevuti a h1
     
-    s2.cmd('ovs-ofctl add-flow s2 "table=0,priority=100,in_port=1 actions=output:vxlan2"')
-    s2.cmd('ovs-ofctl add-flow s2 "table=0,priority=100,in_port=vxlan2 actions=output:1"')
+    s2.cmd('ovs-ofctl add-flow s2 "table=0,priority=100,in_port=1 actions=output:vxlan2"') # Inoltra pacchetti da h2 a vxlan2
+    s2.cmd('ovs-ofctl add-flow s2 "table=0,priority=100,in_port=vxlan2 actions=output:1"') # Inoltra pacchetti VXLAN ricevuti a h2
 
+# Funzione per avviare la rete Mininet e applicare la configurazione
 def start_network():
+    # Creazione della topologia VXLAN definita in VXLANTopo
     topo = VXLANTopo()
     net = Mininet(
         topo=topo,
@@ -56,6 +58,7 @@ def start_network():
         autoSetMacs=True
     )
     
+    # Avviamo la rete virtuale
     net.start()
     
     # Configure VXLAN

@@ -13,13 +13,15 @@ from ryu.lib.packet import udp
 class VXLANController(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
+    # Costruttore del controller
     def __init__(self, *args, **kwargs):
-        super(VXLANController, self).__init__(*args, **kwargs)
+        super(VXLANController, self).__init__(*args, **kwargs) # Inizializzazione del controller
 
+    # Metodo per gestire l'evento di connessione di uno switch Openflow
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
-        datapath = ev.msg.datapath
-        ofproto = datapath.ofproto
+        datapath = ev.msg.datapath #Identificativo dello switch
+        ofproto = datapath.ofproto # Protocollo OpenFlow utilizzato dallo switch
         parser = datapath.ofproto_parser
 
         # Aggiunta di una regola di default per il table-miss
@@ -27,24 +29,33 @@ class VXLANController(app_manager.RyuApp):
         actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER, ofproto.OFPCML_NO_BUFFER)]
         self.add_flow(datapath, 0, match, actions)
 
+    # Metodo per aggiungere una regola di flusso (instradamento) allo switch
     def add_flow(self, datapath, priority, match, actions):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
+        # Definizione dell'azione da applicare ai pacchetti che soddisfano la regola
         inst = [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS, actions)]
+        # Creiamo un messaggio per aggiungere una nuova regola di instradamento
+        # - `datapath`: lo switch che riceverà la regola
+        # - `priority`: la priorità della regola (più alto significa più importante)
+        # - `match`: i criteri che i pacchetti devono soddisfare per attivare questa regola
+        # - `instructions`: le azioni da eseguire sui pacchetti corrispondenti
         mod = parser.OFPFlowMod(
             datapath=datapath, priority=priority, match=match, instructions=inst
         )
-        datapath.send_msg(mod)
+        datapath.send_msg(mod) # Inviamo il messaggio allo switch per installare la regola
 
+    # Metodo per gestire l'evento di ricezione di un pacchetto da uno switch (packet-in)
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     def _packet_in_handler(self, ev):
-        msg = ev.msg
-        datapath = msg.datapath
-        in_port = msg.match['in_port']
+        msg = ev.msg # Messaggio ricevuto dallo switch
+        datapath = msg.datapath # Switch che ha inviato il messaggio
+        in_port = msg.match['in_port'] # Porta di ingresso del pacchetto
 
-        pkt = packet.Packet(msg.data)
-        eth = pkt.get_protocol(ethernet.ethernet)
+        pkt = packet.Packet(msg.data) # Estraiamo il pacchetto dal messaggio
+        eth = pkt.get_protocol(ethernet.ethernet) # Estraiamo l'header Ethernet dal pacchetto
 
+        # Verifichiamo che il pacchetto sia un pacchetto VXLAN
         if eth.ethertype == 0x0800:  # IPv4
             ip_pkt = pkt.get_protocol(ipv4.ipv4)
             if ip_pkt.proto == 17:  # UDP
