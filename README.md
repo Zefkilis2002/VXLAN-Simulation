@@ -196,6 +196,6 @@ Analisi dell'intestazione VXLAN:
 
 ## 👥 Contributors
 
-- **Zefkilis2002** - Sviluppatore principale
+- **Zefkilis2002** **LucaPio02**- Sviluppatori
 
 Se desideri contribuire, puoi aprire una pull request o contattarmi direttamente! 🚀
