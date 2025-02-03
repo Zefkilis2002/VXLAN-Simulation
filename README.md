@@ -147,18 +147,47 @@ Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proven
 
 ## 🔄 Descrizione del WorkFlow
 
-1️⃣ **Configurazione della rete**
-   - Mininet avvia due switch OVS e due host.
-   - Viene stabilito un tunnel VXLAN tra gli switch.
+Ecco la sezione migliorata del **Flusso di lavoro**, con descrizioni più dettagliate e una formattazione chiara:
 
-2️⃣ **Gestione del traffico con Ryu**
-   - Il controller riceve pacchetti e applica le regole di instradamento.
-   - Registra i pacchetti VXLAN e i loro dettagli (VNI, IP, MAC).
+---
 
-3️⃣ **Cattura e analisi con Wireshark**
-   - Wireshark monitora i pacchetti UDP sulla porta 4789.
-   - È possibile esaminare l'intestazione VXLAN e il frame Ethernet incapsulato.
+## 🔄 Flusso di lavoro
 
+Per testare la simulazione VXLAN eseguire i seguenti passaggi:
+
+1️⃣ **Avvia il controller Ryu**  
+   - Esegui il controller per gestire il traffico OpenFlow sulla rete simulata:
+   ```
+   ryu-manager vxlan_controller.py
+   ```
+
+2️⃣ **Avvia la topologia di rete VXLAN**  
+   - Esegui lo script per creare la rete virtuale con Mininet e configurare i tunnel VXLAN:
+   ```
+   sudo python3 vxlan_topology.py
+   ```
+
+3️⃣ **Collegati alla macchina virtuale con MobaXterm per eseguire WireShark con l'interfaccia grafica**  
+   - Apri **MobaXterm** e connettiti alla VM dove è in esecuzione la simulazione ed esegui WireShark
+   ```
+   sudo wireshark
+   ```
+
+4️⃣ **Cattura il traffico VXLAN**  
+   - Seleziona l'interfaccia **any** e applica il filtro per intercettare i pacchetti VXLAN:
+   ```
+   udp.port == 4789
+   ```
+
+5️⃣ **Genera traffico sulla rete simulata**  
+   - Sul terminale di Mininet, con la topologia VXLAN attiva, esegui il comando per verificare la connettività tra gli host:
+   ```
+   h1 ping h2
+   ```
+
+---
+
+Questa versione migliora la leggibilità e aggiunge chiarezza a ogni passaggio, mantenendo una struttura ben organizzata. 🚀
 ## 📂 Material
 
 Esempio di pacchetto VXLAN catturato in Wireshark:
