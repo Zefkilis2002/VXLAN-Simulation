@@ -150,13 +150,13 @@ Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proven
 Per testare la simulazione VXLAN eseguire i seguenti passaggi:
 
 1️⃣ **Avvia il controller Ryu**  
-   - Esegui il controller per gestire il traffico OpenFlow sulla rete simulata:
+   - Esegui il controller su un primo terminale per gestire il traffico OpenFlow sulla rete simulata:
    ```
    ryu-manager vxlan_controller.py
    ```
 
 2️⃣ **Avvia la topologia di rete VXLAN**  
-   - Esegui lo script per creare la rete virtuale con Mininet e configurare i tunnel VXLAN:
+   - Esegui lo script per creare la rete virtuale con Mininet e configurare i tunnel VXLAN su un secondo terminale:
    ```
    sudo python3 vxlan_topology.py
    ```
@@ -179,9 +179,6 @@ Per testare la simulazione VXLAN eseguire i seguenti passaggi:
    h1 ping h2
    ```
 
----
-
-Questa versione migliora la leggibilità e aggiunge chiarezza a ogni passaggio, mantenendo una struttura ben organizzata. 🚀
 ## 📂 Material
 
 Esempio di pacchetto VXLAN catturato in Wireshark:
