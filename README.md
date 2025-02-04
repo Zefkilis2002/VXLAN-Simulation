@@ -192,7 +192,7 @@ Per testare la simulazione VXLAN eseguire i seguenti passaggi:
    - Analizza sull'applicazione i pacchetti catturati con il filtro "udp.port == 4789" attivo:
 
 <p align="center">
-    <img src="captures/vxlan_packet_details.png" width="500">
+    <img src="captures/caturra_generale.png" width="500">
     <img src="captures/vxlan_packet_details.png" width="500">
     <img src="captures/vxlan_header_analysis.png" width="500">
 </p>
