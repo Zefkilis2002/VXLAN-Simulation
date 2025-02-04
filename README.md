@@ -192,27 +192,18 @@ Per testare la simulazione VXLAN eseguire i seguenti passaggi:
    - Analizza sull'applicazione i pacchetti catturati con il filtro "udp.port == 4789" attivo:
 
 <p align="center">
-    <img src="captures/vxlan_packet_details.png" width="300">
-    <img src="captures/vxlan_packet_details.png" width="300">
-    <img src="captures/vxlan_header_analysis.png" width="300">
+    <img src="captures/vxlan_packet_details.png" width="400">
+    <img src="captures/vxlan_packet_details.png" width="400">
+    <img src="captures/vxlan_header_analysis.png" width="400">
 </p>
 
   
 
 ## 📂 Material
 
-Esempio di pacchetto VXLAN catturato in Wireshark:
-
-<p align="center">
-    <img src="captures/vxlan_packet_details.png" width="600">
-</p>
-
-Analisi dell'intestazione VXLAN:
-
-<p align="center">
-    <img src="captures/vxlan_header_analysis.png" width="600">
-</p>
-
+Qui sotto i link ai materiali utili per il progetto:
+- 🔗 [Video dimostrazione dell'esecuzione:](https://www.youtube.com/watch?v=FdMMLcU9ET4&ab_channel=kostazefkilis).
+- 🔗 [Presentazione PDF del progetto:](link_del_pdf.com).
 
 ## 👥 Contributors
 
