@@ -1,4 +1,4 @@
-Versione in inglese [qui](README_ITA.md)
+Versione in inglese [qui](README.md)
 
 ---
 
