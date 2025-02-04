@@ -1,3 +1,6 @@
+Versione in inglese [qui](README.md)
+---
+
 # VXLAN-Simulation
 
 > VXLAN-Simulation è un progetto pensato per dimostrare l'incapsulamento di pacchetti Layer 2 in una rete IP/UDP utilizzando VXLAN.
