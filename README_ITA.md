@@ -1,4 +1,5 @@
-Versione in inglese [qui](README.md)
+Versione in inglese [qui](README_ITA.md)
+
 ---
 
 # VXLAN-Simulation
