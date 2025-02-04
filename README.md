@@ -115,5 +115,6 @@ Below are useful materials for the project:
 ## 👥 Contributors
 - **Zefkilis2002**, k.zefkilis@studenti.unitn.it, 226600
 - **LucaPio02**, lucapio.pierno@studenti.unint.it, 228904
+
 If you wish to contribute, you can open a pull request or contact me directly! 🚀
 
