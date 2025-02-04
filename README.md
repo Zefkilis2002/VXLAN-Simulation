@@ -164,35 +164,40 @@ Ogni switch Open vSwitch (OVS) è configurato per incapsulare il traffico proven
 
 Per testare la simulazione VXLAN eseguire i seguenti passaggi:
 
-1️⃣ **Avvia il controller Ryu**  
-   - Esegui il controller su un primo terminale per gestire il traffico OpenFlow sulla rete simulata:
+1️⃣ **Avvia la topologia di rete VXLAN**  
+   - Esegui lo script per creare la rete virtuale con Mininet e configurare i tunnel VXLAN:
    ```
-   ryu-manager vxlan_controller.py
-   ```
-
-2️⃣ **Avvia la topologia di rete VXLAN**  
-   - Esegui lo script per creare la rete virtuale con Mininet e configurare i tunnel VXLAN su un secondo terminale:
-   ```
-   sudo python3 vxlan_topology.py
+   sudo python3 vxlan_topology_1.py
    ```
 
-3️⃣ **Collegati alla macchina virtuale con MobaXterm per eseguire WireShark con l'interfaccia grafica**  
+2️⃣ **Collegati alla macchina virtuale con MobaXterm per eseguire WireShark con l'interfaccia grafica**  
    - Apri **MobaXterm** e connettiti alla VM dove è in esecuzione la simulazione ed esegui WireShark
    ```
    sudo wireshark
    ```
 
-4️⃣ **Cattura il traffico VXLAN**  
+3️⃣ **Cattura il traffico VXLAN**  
    - Seleziona l'interfaccia **any** e applica il filtro per intercettare i pacchetti VXLAN:
    ```
    udp.port == 4789
    ```
 
-5️⃣ **Genera traffico sulla rete simulata**  
+4️⃣ **Genera traffico sulla rete simulata**  
    - Sul terminale di Mininet, con la topologia VXLAN attiva, esegui il comando per verificare la connettività tra gli host:
    ```
    h1 ping h2
    ```
+
+5️⃣ **Analizzare i pacchetti catturati da Wireshark**  
+   - Analizza sull'applicazione i pacchetti catturati con il filtro "udp.port == 4789" attivo:
+
+<p align="center">
+    <img src="captures/vxlan_packet_details.png" width="300">
+    <img src="captures/vxlan_packet_details.png" width="300">
+    <img src="captures/vxlan_header_analysis.png" width="300">
+</p>
+
+  
 
 ## 📂 Material
 
