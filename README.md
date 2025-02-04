@@ -86,10 +86,10 @@ VXLAN (**Virtual eXtensible Local Area Network**) è un protocollo di **tunnelin
 
 Per il progetto ho simulato due differenti topologie, una con il file **vxlan_topology_1.py** e una con il file **vxlan_topology_2.py**
 
-### Topologia del file **vxlan_topology_1.py**:
+### 1️⃣ Topologia del file **vxlan_topology_1.py**:
 La topologia simulata nel progetto è composta da:
 - **Due switch OVS** connessi tra loro tramite un tunnel VXLAN.
-- **Tre host**, **h1** connesso allo switch **s1** mentre **h2** e **h3** connessi allo switch s2.
+- **Tre host**, **h1** connesso allo switch **s1** mentre **h2** e **h3** connessi allo switch **s2**.
 - L'host **h1** comunicherà con gli host **h2** e **h3** utilizzando il tunnel **VXLAN***, mentre **h2** e **h3** comunicheranno tra loro tramite **VLAN**, poiché appartengono allo stesso switch.
 
 Il diagramma della topologia è il seguente:
@@ -100,7 +100,7 @@ Il diagramma della topologia è il seguente:
                                     [ h3 ]
 ```
 
-### Topologia del file **vxlan_topology_2.py**:
+### 2️⃣ Topologia del file **vxlan_topology_2.py**:
 La topologia simulata nel progetto è composta da:
 - **Due switch OVS** connessi tra loro tramite un tunnel VXLAN.
 - **Due host**, h1 e h2 connessi rispettivamente ai due switch.
