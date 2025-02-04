@@ -1,3 +1,7 @@
+Italian version [here](README_ITA.md)
+
+---
+
 # VXLAN-Simulation
 > VXLAN-Simulation is a project designed to demonstrate the encapsulation of Layer 2 packets in an IP/UDP network using VXLAN.
 > The system allows simulating a flexible virtual network topology, ensuring the correct transmission of data between hosts through VXLAN tunnels.
