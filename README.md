@@ -13,7 +13,7 @@
 - [Contributors](#contributors)
 
 
-## 📁 Project Structure
+## 📁 Struttura del Progetto
 
 La struttura del progetto è organizzata nel seguente modo:
 ```
@@ -22,9 +22,9 @@ VXLAN-Simulation/
 │   ├── vxlan_topology_1.py  # Prima Topologia Mininet con configurazione VXLANN
 │   ├── vxlan_topology_2.py  # Seconda Topologia Mininet e configurazione VXLAN
 │── captures/                # Immagini e file che testimoniano la cattura
-│   ├── immagine1.png        # Immagine 1
-│   ├── immagine2.png        # Immagine 2
-│   ├── immagine3.png        # Immagine 3
+│   ├── cattura_gener.png    # Immagine 1
+│   ├── vxlan_head.png       # Immagine 2
+│   ├── vxlan_packs.png      # Immagine 3
 │── docs/                    # Documentazione del progetto
 │── README.md                # Documentazione principale
 ```
@@ -199,7 +199,7 @@ Per testare la simulazione VXLAN eseguire i seguenti passaggi:
 
   
 
-## 📂 Material
+## 📂 Materiale
 
 Qui sotto i link ai materiali utili per il progetto:
 - 🔗 [Video dimostrazione dell'esecuzione:](https://www.youtube.com/watch?v=FdMMLcU9ET4&ab_channel=kostazefkilis).
