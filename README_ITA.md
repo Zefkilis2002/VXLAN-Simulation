@@ -208,7 +208,8 @@ Per testare la simulazione VXLAN eseguire i seguenti passaggi:
 
 Qui sotto i link ai materiali utili per il progetto:
 - 🔗 [Video dimostrazione dell'esecuzione:](https://www.youtube.com/watch?v=FdMMLcU9ET4&ab_channel=kostazefkilis).
-- 🔗 [Presentazione PDF del progetto:](link_del_pdf.com).
+- 🔗 [Presentazione PDF del progetto:](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/Simulazione%20VXLAN.pdf).
+- 🔗 [Immagine della topologia 1:](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/captures/Topologia_Vxlan.png).
 
 ## 👥 Contributors
 
