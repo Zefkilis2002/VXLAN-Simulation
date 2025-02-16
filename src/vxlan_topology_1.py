@@ -28,7 +28,7 @@ class VXLANTopo(Topo):
         self.addLink(s1, s2)
 
 def configure_vxlan(net):
-    # Get switches
+    # Ottenere il riferimento agli switch
     s1, s2 = net.get('s1', 's2')
     
     # Configurazione degli indirizzi IP degli switch
@@ -41,20 +41,21 @@ def configure_vxlan(net):
     s2.cmd('ovs-vsctl add-port s2 vxlan2 -- set interface vxlan2 type=vxlan \
            options:remote_ip=192.168.1.1 options:local_ip=192.168.1.2 options:key=1000')
     
-    # Pulizia delle regole esistenti
+    # Pulizia delle regole esistenti per evitare conflitti
     s1.cmd('ovs-ofctl del-flows s1')
     s2.cmd('ovs-ofctl del-flows s2')
     
     # Regole OpenFlow per s1
-    # Add flooding rules for broadcast/unknown traffic
+    # Il traffico in ingresso dalla porta 1 viene inoltrato alla porta 3 (tunnel VXLAN)
     s1.cmd('ovs-ofctl add-flow s1 "table=0,priority=1,in_port=1 actions=output:3"')
+    # Il traffico in ingresso dalla porta 3 (tunnel VXLAN) viene inoltrato alla porta 1
     s1.cmd('ovs-ofctl add-flow s1 "table=0,priority=1,in_port=3 actions=output:1"')
     
     # Regole OpenFlow per s2
-    # Traffico locale tra h2 e h3 (priorità più alta)
-    # Regole OpenFlow per s2
-    # Traffico locale tra h2 e h3 (priorità più alta)
+    # Il traffico locale tra h2 e h3 ha priorità più alta (priority=2)
+    # Se il traffico arriva alla porta 1 ed è destinato a h3 (MAC 00:00:00:00:00:03), invialo alla porta 2
     s2.cmd('ovs-ofctl add-flow s2 "table=0,priority=2,in_port=1,dl_dst=00:00:00:00:00:03 actions=output:2"')
+    # Se il traffico arriva alla porta 2 ed è destinato a h2 (MAC 00:00:00:00:00:02), invialo alla porta 1
     s2.cmd('ovs-ofctl add-flow s2 "table=0,priority=2,in_port=2,dl_dst=00:00:00:00:00:02 actions=output:1"')
 
     # Gestione del traffico verso h1
@@ -77,10 +78,10 @@ def start_network():
     
     net.start()
     
-    # Configure VXLAN
+    # Configurazione VXLAN
     configure_vxlan(net)
     
-    # Enable IP forwarding
+    # Abilita l'inoltro IP
     os.system('sysctl -w net.ipv4.ip_forward=1')
     
     print("*** Network started successfully")
@@ -89,7 +90,7 @@ def start_network():
     print("*** h1 ping h3")
     print("*** h2 ping h3")
     print("*** To check VXLAN encapsulation:")
-    print("*** tcpdump -i any -nn port 4789")
+    print("*** tcpdump -i any -nn port 4789 or open Wireshark with udp.port == 4789")
     
     CLI(net)
     net.stop()
