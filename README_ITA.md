@@ -29,7 +29,8 @@ VXLAN-Simulation/
 │   ├── cattura_gener.png    # Immagine 1
 │   ├── vxlan_head.png       # Immagine 2
 │   ├── vxlan_packs.png      # Immagine 3
-│── docs/                    # Documentazione del progetto
+│   ├── Topologia_Vxlan.png.png     
+│── Simulazione VXLAN.pdf    # Presentazione del progetto
 │── README.md                # Documentazione principale
 ```
 
