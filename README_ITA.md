@@ -213,5 +213,3 @@ Qui sotto i link ai materiali utili per il progetto:
 
 - **Zefkilis2002**, k.zefkilis@studenti.unitn.it, 226600
 - **LucaPio02**, lucapio.pierno@studenti.unint.it, 228904
-
-Se desideri contribuire, puoi aprire una pull request o contattarmi direttamente! 🚀
