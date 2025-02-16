@@ -114,10 +114,48 @@ Each Open vSwitch (OVS) is configured to encapsulate host traffic into a VXLAN p
    ssh -X -p 2222 vagrant@localhost
    ```
 
+## 🔄 Workflow Description
+
+To test the VXLAN simulation, follow these steps:
+
+1️⃣ **Start the VXLAN network topology**  
+   - Run the script to create the virtual network with Mininet and configure the VXLAN tunnels:
+   ```
+   sudo python3 vxlan_topology_1.py
+   ```
+
+2️⃣ **Connect to the virtual machine using MobaXterm to run Wireshark with a graphical interface**  
+   - Open **MobaXterm**, connect to the VM where the simulation is running, and start Wireshark:
+   ```
+   sudo wireshark
+   ```
+
+3️⃣ **Capture VXLAN traffic**  
+   - Select the **any** interface and apply the filter to intercept VXLAN packets:
+   ```
+   udp.port == 4789
+   ```
+
+4️⃣ **Generate traffic on the simulated network**  
+   - In the Mininet terminal, with the VXLAN topology active, execute the command to verify connectivity between hosts:
+   ```
+   h1 ping h2
+   ```
+
+5️⃣ **Analyze the packets captured by Wireshark**  
+   - Use the Wireshark application to analyze the captured packets with the "udp.port == 4789" filter active:
+
+<p align="center">
+    <img src="captures/vxlan_packet_details.png" width="500">
+    <img src="captures/vxlan_header_analysis.png" width="500">
+    <img src="captures/cattura_generale.png" width="900">
+</p>
+
+
 ## 📂 Multimedia Material
 Below are useful materials for the project:
 - 🔗 [Demonstration Video Execution:](https://www.youtube.com/watch?v=FdMMLcU9ET4&ab_channel=kostazefkilis).
-- 🔗 [Project PDF Presentation:]([link_del_pdf.com](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/Simulazione%20VXLAN.pdf)).
+- 🔗 [Project PDF Presentation:](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/Simulazione%20VXLAN.pdf).
 ## 👥 Contributors
 - **Zefkilis2002**, k.zefkilis@studenti.unitn.it, 226600
 - **LucaPio02**, lucapio.pierno@studenti.unint.it, 228904
