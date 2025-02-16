@@ -94,7 +94,7 @@ Per il progetto ho simulato due differenti topologie, una con il file **vxlan_to
 La topologia simulata nel progetto è composta da:
 - **Due switch OVS** connessi tra loro tramite un tunnel VXLAN.
 - **Tre host**, **h1** connesso allo switch **s1** mentre **h2** e **h3** connessi allo switch **s2**.
-- L'host **h1** comunicherà con gli host **h2** e **h3** utilizzando il tunnel **VXLAN***, mentre **h2** e **h3** comunicheranno tra loro tramite **VLAN**, poiché appartengono allo stesso switch.
+- L'host **h1** comunicherà con gli host **h2** e **h3** utilizzando il tunnel **VXLAN**, mentre **h2** e **h3** comunicheranno tra loro tramite **VLAN**, poiché appartengono allo stesso switch.
 
 Il diagramma della topologia è il seguente:
 ```
