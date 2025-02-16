@@ -20,12 +20,12 @@ The project structure is organized as follows:
 VXLAN-Simulation/
 │── src/                     # Main source code
 │   ├── vxlan_topology_1.py  # First Mininet topology with VXLAN configuration
-│   ├── vxlan_topology_2.py  # Second Mininet topology and VXLAN configuration
+│   ├── vxlan_topology_2.py  # Second Mininet topology with VXLAN configuration
 │── captures/                # Images and files showing packet capture
 │   ├── cattura_gener.png    # Image 1
 │   ├── vxlan_head.png       # Image 2
 │   ├── vxlan_packs.png      # Image 3
-│── docs/                    # Project documentation
+│── Simulazione VXLAN.pdf    # Project presentation
 │── README.md                # Main documentation
 ```
 ---
