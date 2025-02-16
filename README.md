@@ -6,6 +6,7 @@ Italian version [here](README_ITA.md)
 > VXLAN-Simulation is a project designed to demonstrate the encapsulation of Layer 2 packets in an IP/UDP network using VXLAN.
 > The system allows simulating a flexible virtual network topology, ensuring the correct transmission of data between hosts through VXLAN tunnels.
 > VXLAN packets are analyzed with **Wireshark** to verify encapsulation and data transport between virtualized hosts.
+
 ## 📌 Contents
 - [Project Structure](#project-structure)
 - [What is VXLAN](#what-is-vxlan)
@@ -72,7 +73,7 @@ VXLAN (**Virtual eXtensible Local Area Network**) is a **tunneling** protocol th
 5. The Ethernet frame is sent to the final destination.
 
 ## 🗺️ Topology Description
-For the project, I simulated two different topologies, one with **vxlan_topology_1.py** and another with **vxlan_topology_2.py**.
+For the project, we simulated two different topologies, one with **vxlan_topology_1.py** and another with **vxlan_topology_2.py**.
 ### 1️⃣ Topology of **vxlan_topology_1.py**:
 The simulated topology consists of:
 - **Two OVS switches** connected via a VXLAN tunnel.
@@ -116,10 +117,7 @@ Each Open vSwitch (OVS) is configured to encapsulate host traffic into a VXLAN p
 ## 📂 Multimedia Material
 Below are useful materials for the project:
 - 🔗 [Demonstration Video Execution:](https://www.youtube.com/watch?v=FdMMLcU9ET4&ab_channel=kostazefkilis).
-- 🔗 [Project PDF Presentation:](link_del_pdf.com).
+- 🔗 [Project PDF Presentation:]([link_del_pdf.com](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/Simulazione%20VXLAN.pdf)).
 ## 👥 Contributors
 - **Zefkilis2002**, k.zefkilis@studenti.unitn.it, 226600
 - **LucaPio02**, lucapio.pierno@studenti.unint.it, 228904
-
-If you wish to contribute, you can open a pull request or contact me directly! 🚀
-
