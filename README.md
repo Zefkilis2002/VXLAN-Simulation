@@ -27,6 +27,7 @@ VXLAN-Simulation/
 │   ├── vxlan_packs.png      # Image 3
 │── Simulazione VXLAN.pdf    # Project presentation
 │── README.md                # Main documentation
+│── README_ITA.md            # Italian Main documentation
 ```
 ---
 ## 🌐 What is VXLAN
