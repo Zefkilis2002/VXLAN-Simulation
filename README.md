@@ -26,6 +26,7 @@ VXLAN-Simulation/
 │   ├── cattura_gener.png    # Image 1
 │   ├── vxlan_head.png       # Image 2
 │   ├── vxlan_packs.png      # Image 3
+│   ├── Topology_Vxlan.png   # Image 4
 │── Simulazione VXLAN.pdf    # Project presentation
 │── README.md                # Main documentation
 │── README_ITA.md            # Italian Main documentation
@@ -156,6 +157,8 @@ To test the VXLAN simulation, follow these steps:
 Below are useful materials for the project:
 - 🔗 [Demonstration Video Execution:](https://www.youtube.com/watch?v=FdMMLcU9ET4&ab_channel=kostazefkilis).
 - 🔗 [Project PDF Presentation:](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/Simulazione%20VXLAN.pdf).
+- 🔗 [Topology 1 image:]([https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/Simulazione%20VXLAN.pdf](https://github.com/Zefkilis2002/VXLAN-Simulation/blob/main/captures/Topologia_Vxlan.png)).
+
 ## 👥 Contributors
 - **Zefkilis2002**, k.zefkilis@studenti.unitn.it, 226600
 - **LucaPio02**, lucapio.pierno@studenti.unint.it, 228904
